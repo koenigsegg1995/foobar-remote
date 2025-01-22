@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: foobar-remote
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/foobar_remote?serverTimezone=Asia/Taipei
+    username: foobar_admin
+    password: maddogbitesme
+
+server:
+  port: 8080
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml     # mapper XML 文件位置
+  type-aliases-package: com.koeHo.foobarremote.model.entity  # 實體類包路徑
+  configuration:
+    map-underscore-to-camel-case: true        # 開啟駝峰命名轉換
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  # 開啟 SQL 日誌
