@@ -20,14 +20,27 @@ public class BeefWebApiCaller {
      * 取得播放器當前狀態
      *
      * @return PlayerStateResponse
+     *             播放狀態、音量等資訊
      */
     public PlayerStateResponse getPlayerState(){
         return webClient
                 .get()                                  // GET 請求
-                .uri("/player/state")               // API
-                .retrieve()                             // 取回
+                .uri("/player/state")               // API uri
+                .retrieve()                             // 回應處理方式
                 .bodyToMono(PlayerStateResponse.class)  // 轉換 PlayerStateResponse
                 .block(Duration.ofSeconds(5));          // 等待響應最多 5 秒
+    }
+
+    /**
+     * 播放
+     */
+    public void play(){
+        webClient
+                .post()
+                .uri("/player/play")
+                .retrieve()
+                .bodyToMono(Void.class)
+                .block(Duration.ofSeconds(5));
     }
 
 }
