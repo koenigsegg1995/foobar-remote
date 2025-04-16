@@ -1,6 +1,7 @@
 package com.koeHo.foobarremote.client;
 
 import com.koeHo.foobarremote.model.dto.response.PlayerStateResponse;
+import com.koeHo.foobarremote.util.ApiCallException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -21,6 +22,7 @@ public class BeefWebApiCaller {
      *
      * @return PlayerStateResponse
      *             播放狀態、音量等資訊
+     * @throws ApiCallException 當 API 呼叫異常
      */
     public PlayerStateResponse getPlayerState(){
         return webClient
